@@ -46,7 +46,7 @@ class ATM:
             self.conn.commit()
 
             print("\nAccount created successfully!")
-            print("------ Welcome To ATM ------")
+            print("------ Welcome To ATM ------\n")
 
             self.login = True
             return
@@ -63,7 +63,7 @@ class ATM:
                 print("Wrong PIN")
 
     def menu(self):
-        print("\n1. Balance\n2. Deposit\n3. Withdraw\n4. Change PIN\n5. Exit")
+        print("1. Balance\n2. Deposit\n3. Withdraw\n4. Change PIN\n5. Exit")
 
     def check_balance(self):
         self.cursor.execute("SELECT balance FROM users WHERE account_number=%s",(self.num,))
