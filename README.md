@@ -1,81 +1,76 @@
-## ATM Management System (Python)
+# 🏧 ATM Management System (Python + MySQL)
 
-This is a simple ATM simulation program written in Python.
-It allows users to log in using an account number and PIN, then perform banking operations like:
+This is a simple ATM simulation project built using Python and MySQL (PyMySQL). It allows users to create accounts, login, and perform basic banking operations.
 
-1. Checking balance
+---
 
-2. Depositing money
+## 🚀 Features
+- User Login (Mobile Number + PIN)
+- Auto Account Creation (if user not exists)
+- Check Balance
+- Deposit Money
+- Withdraw Money
+- Change PIN
+- PIN Validation (4-digit & unique)
+- Mobile Number Validation (10 digits, starts with 6/7/8/9)
+- Data stored in MySQL database
 
-3. Withdrawing money
+---
 
-4. Changing PIN
-
-5. Exiting the system
-
-All data is stored in a CSV file (Data.csv).
-
-📂 Project Structure
+## 📁 Project Structure
 ATM_Project/
 │
-├── atm.py
-├── numbers.csv
-└── README.md
+├── main.py        # Entry point  
+├── atm.py         # Main ATM logic  
+├── db.py          # Database connection  
+├── config.py      # Database configuration  
+└── README.md      # Documentation  
 
-📄 numbers.csv Format
+---
 
-The CSV file stores data in groups of three values per line:
+## ⚙️ Setup Instructions
 
-account_number,pin,balance
+1. Install dependencies:
+pip install pymysql cryptography
 
-Example:
-1001,1234,5000
-1002,4321,8000
+2. Setup MySQL Database:
+CREATE DATABASE atm_db;
+USE atm_db;
+CREATE TABLE users (
+    account_number VARCHAR(10) PRIMARY KEY,
+    pin VARCHAR(4) UNIQUE,
+    balance INT
+);
 
-⚙️ Features
+3. Configure Database (config.py):
+DB_CONFIG = {
+    "host": "localhost",
+    "user": "root",
+    "password": "your_password",
+    "database": "atm_db"
+}
 
-✅ Secure login with PIN (3 attempts only)
-✅ Balance check
-✅ Deposit money
-✅ Withdraw money
-✅ Change PIN
-✅ Auto-save updated balance to CSV file
-✅ Menu-driven interface
+4. Run Project:
+python main.py
 
-▶️ How to Run
-1️⃣ Make sure Python is installed
+---
 
-Check using:
+## 🧠 How It Works
+- User enters mobile number  
+- If account exists → login with PIN  
+- If not → account is created automatically  
+- After login → user gets ATM menu  
 
-python --version
+---
 
-2️⃣ Run the program
+## 🔐 Validations
+- Mobile number: 10 digits, starts with 6/7/8/9  
+- PIN: 4 digits, unique  
 
-Open terminal in the project folder and run:
+---
 
-python Atm.py
-
-🧠 How It Works
-
-Program reads all data from numbers.csv
-
-Searches for the entered account number
-
-Allows 3 PIN attempts
-
-After successful login, menu is displayed
-
-All balance changes are written back to the CSV file
-
-⚠️ Limitations
-
-No encryption for PIN (plain text in CSV)
-
-No validation for overdraft withdrawal
-
-Single-user session at a time
-
-Basic error handling
+## ⭐ Note
+This is a beginner-friendly project for learning Python OOP, MySQL integration, and basic banking logic.
 
 ## Author
 
